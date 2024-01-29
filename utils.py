@@ -20,8 +20,8 @@ def get_hh_data(employers_ids: list[str]) -> list[dict[str, Any]]:
                 'id': vacancy['id'],
                 'name': vacancy['name'],
                 'description': vacancy['snippet']['responsibility'],
-                'salary_from': int(vacancy['salary']['from'] if vacancy['salary']['from'] is not None else 'Нет данных'),
-                'salary_to': int(vacancy['salary']['to'] if vacancy['salary']['to'] is not None else 'Нет данных'),
+                'salary_from': int(vacancy['salary']['from'] if vacancy['salary']['from'] is not None else '0'),
+                'salary_to': int(vacancy['salary']['to'] if vacancy['salary']['to'] is not None else '0'),
                 'currency': vacancy['salary']['currency'],
                 'city': vacancy['area']['name'],
                 'url': vacancy['alternate_url']
