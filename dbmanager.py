@@ -18,7 +18,6 @@ class DBManager:
                     SELECT companies.name, COUNT(vacancies.vacancy_id) as count_vacancies FROM companies
                     INNER JOIN vacancies ON companies.company_id=vacancies.employer_id
                     GROUP BY companies.name
-                    ORDER BY count_vacancies
                 """)
             data = cur.fetchall()
 
@@ -62,7 +61,7 @@ class DBManager:
         return data
 
     def get_vacancies_with_keyword(self, keyword: str) -> list:
-        """Получает список всех вакансий, в названии которых содержится переданное в метод слово"""
+        """Получает список всех вакансий, в названии которых содержится переданное в метод слово."""
         with self.conn.cursor() as cur:
             cur.execute(f"""
                     SELECT companies.name, vacancies.name, vacancies.salary_from, vacancies.url FROM vacancies
