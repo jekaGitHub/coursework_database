@@ -8,10 +8,10 @@ def get_hh_data(employers_ids: list[str]) -> list[dict[str, Any]]:
     """Получить данные о работодателях и их вакансиях с сайта hh.ru с помощью API."""
 
     data = []
-    vacancies = []
     url = 'https://api.hh.ru/'
 
     for employer_id in employers_ids:
+        vacancies = []  # Очищение списка вакансий для каждого работодателя
         employer_data = requests.get(f'{url}employers/{employer_id}').json()
         vacancies_data = requests.get(f'{url}vacancies', params={'employer_id': employer_id, 'only_with_salary': True}).json()
 
